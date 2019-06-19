@@ -14,7 +14,7 @@
                 bat 'npm run build'
             }
         }
-       stage('test vad som händer') {
+       stage('test it') {
             steps {
                 bat 'npm run test --  --coverage'
              }
