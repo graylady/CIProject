@@ -6,17 +6,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
         stage('Build Production files') {
             steps {
-                sh 'npm run build'
+                bat 'npm run build'
             }
         }
        stage('test vad som h�nder') {
             steps {
-                sh 'npm run test --  --coverage'
+                bat 'npm run test --  --coverage'
              }
         }
         stage('Deploy') {
