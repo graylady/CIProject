@@ -1,28 +1,29 @@
 pipeline {
-    agent  any
+    agent any
+    
     tools {nodejs "node"}
-       
+
     stages {
-        stage ('Build') {
-             stages{
-                 stage ('install dependencies') { 
-                    steps {
-                      sh 'cd CIProject && npm install && cd ..' 
-                       }
-             }
-                 stage('Build dist files') { 
-                    steps {
-                         sh 'cd hypertime-frontend && npm run build && cd ..' 
-                    }
-            
-                }
+        stage('Build') {
+            steps {
+                bat 'npm install'
             }
         }
-        stage('Test') { 
+        stage('Build Production files') {
             steps {
-                sh 'cd hypertime-frontend && npm run test' 
-               
+                bat 'npm run build'
             }
-        }   
+        }
+       stage('test vad som händer') {
+            steps {
+                bat 'npm run test --  --coverage'
+             }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
     }
 }
+   
