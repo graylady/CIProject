@@ -7,12 +7,12 @@ pipeline {
              stages{
                  stage ('install dependencies') { 
                     steps {
-                      sh 'cd hypertime-frontend && npm install && cd ..' 
+                      sh 'cd CIProject && npm install && cd ..' 
                        }
              }
                  stage('Build dist files') { 
                     steps {
-                         sh 'cd hypertime-frontend && npm run build && cd ..' 
+                         sh 'cd CIProject && npm run build && cd ..' 
                     }
             
                 }
@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                sh 'cd hypertime-frontend && npm run test' 
+                sh 'cd CIProject && npm run test' 
                
             }
         }   
